@@ -53,13 +53,7 @@ write-output "Enabling RDP"
 write-host "(host) Enabling RDP"
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value "0"
 
-
 # Disable Server Manager at login
 write-output "Disabling Server Manager at login"
 write-host "(host) Disabling Server Manager at login"
 Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\ServerManager' -Name "DoNotOpenServerManagerAtLogon" -Value 1
-
-# Install Chocolatey
-write-output "Installing Chocolatey"
-write-host "(host) Installing Chocolatey"
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
